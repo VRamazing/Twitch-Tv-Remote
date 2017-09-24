@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Twitch Tv  Remote</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Pacifico|roboto'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class ="wrapper" ng-app="twitchApp" ng-controller = "twitchCtrl">
+
+  <div class = "jumbotron" >
+    <div class = "row">
+      <div class = "col-sm-9">
+        <h1>Twitch TV -Remote</h1>
+      </div>
+      <div class = "col-sm-3 right">
+        <form>
+         <div class="btn-group" >
+          <label class="btn btn-secondary btn-radio" ng-class="{'active': status == 'all'}">
+            <input type="radio"  ng-model = "status" value ="all"   > All
+          </label>
+          <label class="btn btn-secondary btn-radio" ng-class="{'active': status == 'online'}">
+            <input type="radio"  ng-model = "status" value ="online" ng-class="{'active': status == 'online'}" > Online
+          </label>
+          <label class="btn btn-secondary btn-radio" ng-class="{'active': status == 'offline'}">
+            <input type="radio"  ng-model = "status" value ="offline" > Offline
+          </label>
+        </div>
+       </form>
+      </div>
+
+    </div>
+
+
+  </div>
+  <div class = "container" id = "#main">
+    
+    <table class="table table-striped">
+
+      <tbody>
+        <p ng-show="!loading">Fetching Data....</p>
+        <tr ng-repeat = "field in jsonArr | filter:myFilter">
+          <td><img ng-src ="{{field.image}}" class="img-circle" height="30" width="30" ></td>
+          <td><a ng-href = "{{field.url}}" target = "_blank">{{field.user}}</a></td>
+          <td>{{field.stream}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+           
+  
+<br />
+<footer><br />Designed by <a href = "http://www.vigneshramesh.in">@Vignesh Ramesh</a></footer>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
